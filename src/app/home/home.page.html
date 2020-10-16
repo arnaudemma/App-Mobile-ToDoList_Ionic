@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home Management
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,26 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Home Management</ion-title>
+      <ion-buttons slot="end">
+        <span class="todoNb">
+          {{ tasks.length }}
+        </span>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>A partir de 8 ans <a target="_blank" rel="noopener noreferrer" href="#" >Règlement à la maison</a></p>
+
+    <ion-list>
+      <ion-item *ngFor="let task of tasks">
+        <ion-label>{{task.id}}</ion-label>
+        <ion-label [class.done]="task.status">
+          {{task.title}}
+        </ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="task.status"></ion-checkbox>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
